@@ -1,0 +1,33 @@
+import express from "express";
+import bodyParser from "body-parser";
+import adminRoutes from "./routes/admin.js";
+import shopRoutes from "./routes/shop.js";
+const PORT = 5000;
+
+const app = express();
+
+// Use a third-party library to encoded the stream with Buffer and store in body
+app.use(bodyParser.urlencoded({ extended: true })); // extended:true supports nested data structure
+
+// Optional format to use for passing  API Data
+// app.use(bodyParser.json())
+
+// Using Express  Middleware to parse form data (x-www-form-urlencoded)
+// app.use(bodyParser.urlencoded({ extended: false }));
+
+//  Middleware to parse JSON data (optional, for APIs)
+// app.use(bodyParser.json());
+
+
+// Filtering with Group paths
+app.use("/admin",adminRoutes);
+app.use(shopRoutes);
+
+app.use((req,res,next)=>{
+  res.status(404).send('<h1>Page Not Found</h1>')
+})
+
+
+app.listen(PORT, () => {
+  console.log(`Server Listening on http://localhost:${PORT}`);
+});
