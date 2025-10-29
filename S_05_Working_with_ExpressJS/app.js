@@ -2,6 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import adminRoutes from "./routes/admin.js";
 import shopRoutes from "./routes/shop.js";
+import path from 'path'
+import rootDir from "./utils/path.js";
 const PORT = 5000;
 
 const app = express();
@@ -23,8 +25,11 @@ app.use(bodyParser.urlencoded({ extended: true })); // extended:true supports ne
 app.use("/admin",adminRoutes);
 app.use(shopRoutes);
 
+app.use(express.static(path.join(rootDir,'public')))
+
 app.use((req,res,next)=>{
-  res.status(404).send('<h1>Page Not Found</h1>')
+  // res.statusCode(404)
+  res.status(404).sendFile(path.join(rootDir,'views','404.html'))
 })
 
 

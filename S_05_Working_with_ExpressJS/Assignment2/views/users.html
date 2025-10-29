@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add User | Visitor Management</title>
+  <!-- Same shared CSS -->
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <!-- Navbar (same as index.html) -->
+  <nav class="navbar">
+    <div class="logo">Visitor Management</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href='/users' class="active">Users</a></li>
+    </ul>
+  </nav>
+
+  <!-- Form Section -->
+  <section class="form-section">
+    <h2>Add a New User</h2>
+    <form id="userForm" name="username" method="post">
+      <input 
+        type="text" 
+        id="fullname" 
+        name="fullname" 
+        placeholder="Enter full name"
+        required
+      />
+      <button type="submit">Add User</button>
+    </form>
+
+    
+  </section>
+
+</body>
+</html>
